@@ -1,0 +1,16 @@
+{
+    "app": {
+        "name": "My Web App",
+        "version": "1.0.0",
+        "author": "Developer"
+    },
+    "settings": {
+        "theme": "light",
+        "language": "en",
+        "debug": false
+    },
+    "api": {
+        "baseUrl": "https://api.example.com",
+        "timeout": 5000
+    }
+}
