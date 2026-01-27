@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="display" id="display">0</div>
+            <div class="buttons">
+                <button class="btn btn-function" onclick="calc.clear()">C</button>
+                <button class="btn btn-function" onclick="calc.toggleSign()">+/-</button>
+                <button class="btn btn-function" onclick="handleSqrt()">√</button>
+                <button class="btn btn-operator" onclick="calc.setOperation('/')">÷</button>
+                
+                <button class="btn" onclick="calc.appendDigit('7')">7</button>
+                <button class="btn" onclick="calc.appendDigit('8')">8</button>
+                <button class="btn" onclick="calc.appendDigit('9')">9</button>
+                <button class="btn btn-operator" onclick="calc.setOperation('*')">×</button>
+                
+                <button class="btn" onclick="calc.appendDigit('4')">4</button>
+                <button class="btn" onclick="calc.appendDigit('5')">5</button>
+                <button class="btn" onclick="calc.appendDigit('6')">6</button>
+                <button class="btn btn-operator" onclick="calc.setOperation('-')">−</button>
+                
+                <button class="btn" onclick="calc.appendDigit('1')">1</button>
+                <button class="btn" onclick="calc.appendDigit('2')">2</button>
+                <button class="btn" onclick="calc.appendDigit('3')">3</button>
+                <button class="btn btn-operator" onclick="calc.setOperation('+')">+</button>
+                
+                <button class="btn btn-zero" onclick="calc.appendDigit('0')">0</button>
+                <button class="btn" onclick="calc.appendDecimal()">.</button>
+                <button class="btn btn-equals" onclick="calc.calculate()">=</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="dist/main.js"></script>
+</body>
+</html>

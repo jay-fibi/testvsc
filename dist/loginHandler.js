@@ -1,4 +1,13 @@
 // Login handler with validation and authentication logic
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 export class LoginHandler {
     constructor(formId) {
         const form = document.getElementById(formId);
@@ -47,75 +56,79 @@ export class LoginHandler {
             errors
         };
     }
-    async authenticateUser(credentials) {
-        // Simulate API call with delay
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                // In a real application, this would make an API call
-                // For demo purposes, we'll accept any valid credentials
-                if (credentials.email && credentials.password.length >= 6) {
-                    resolve({
-                        success: true,
-                        message: 'Login successful!',
-                        token: 'demo-token-' + Date.now()
-                    });
-                }
-                else {
-                    resolve({
-                        success: false,
-                        message: 'Invalid credentials'
-                    });
-                }
-            }, 1000);
+    authenticateUser(credentials) {
+        return __awaiter(this, void 0, void 0, function* () {
+            // Simulate API call with delay
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    // In a real application, this would make an API call
+                    // For demo purposes, we'll accept any valid credentials
+                    if (credentials.email && credentials.password.length >= 6) {
+                        resolve({
+                            success: true,
+                            message: 'Login successful!',
+                            token: 'demo-token-' + Date.now()
+                        });
+                    }
+                    else {
+                        resolve({
+                            success: false,
+                            message: 'Invalid credentials'
+                        });
+                    }
+                }, 1000);
+            });
         });
     }
-    async handleSubmit(event) {
-        event.preventDefault();
-        const credentials = {
-            email: this.emailInput.value.trim(),
-            password: this.passwordInput.value,
-            remember: this.rememberCheckbox.checked
-        };
-        // Validate credentials
-        const validation = this.validateCredentials(credentials);
-        if (!validation.isValid) {
-            this.showError(validation.errors.join('\n'));
-            return;
-        }
-        // Show loading state
-        this.setLoadingState(true);
-        try {
-            // Authenticate user
-            const response = await this.authenticateUser(credentials);
-            if (response.success) {
-                this.showSuccess(response.message);
-                // Store token if remember me is checked
-                if (credentials.remember && response.token) {
-                    localStorage.setItem('authToken', response.token);
-                    localStorage.setItem('userEmail', credentials.email);
+    handleSubmit(event) {
+        return __awaiter(this, void 0, void 0, function* () {
+            event.preventDefault();
+            const credentials = {
+                email: this.emailInput.value.trim(),
+                password: this.passwordInput.value,
+                remember: this.rememberCheckbox.checked
+            };
+            // Validate credentials
+            const validation = this.validateCredentials(credentials);
+            if (!validation.isValid) {
+                this.showError(validation.errors.join('\n'));
+                return;
+            }
+            // Show loading state
+            this.setLoadingState(true);
+            try {
+                // Authenticate user
+                const response = yield this.authenticateUser(credentials);
+                if (response.success) {
+                    this.showSuccess(response.message);
+                    // Store token if remember me is checked
+                    if (credentials.remember && response.token) {
+                        localStorage.setItem('authToken', response.token);
+                        localStorage.setItem('userEmail', credentials.email);
+                    }
+                    // Log credentials (in production, never log passwords!)
+                    console.log('Login successful:', {
+                        email: credentials.email,
+                        remember: credentials.remember,
+                        token: response.token
+                    });
+                    // In a real app, redirect to dashboard
+                    setTimeout(() => {
+                        console.log('Redirecting to dashboard...');
+                    }, 1500);
                 }
-                // Log credentials (in production, never log passwords!)
-                console.log('Login successful:', {
-                    email: credentials.email,
-                    remember: credentials.remember,
-                    token: response.token
-                });
-                // In a real app, redirect to dashboard
-                setTimeout(() => {
-                    console.log('Redirecting to dashboard...');
-                }, 1500);
+                else {
+                    this.showError(response.message);
+                }
             }
-            else {
-                this.showError(response.message);
+            catch (error) {
+                this.showError('An error occurred during login. Please try again.');
+                console.error('Login error:', error);
             }
-        }
-        catch (error) {
-            this.showError('An error occurred during login. Please try again.');
-            console.error('Login error:', error);
-        }
-        finally {
-            this.setLoadingState(false);
-        }
+            finally {
+                this.setLoadingState(false);
+            }
+        });
     }
     setLoadingState(loading) {
         const submitButton = this.form.querySelector('button[type="submit"]');
@@ -138,3 +151,4 @@ export class LoginHandler {
         };
     }
 }
+//# sourceMappingURL=loginHandler.js.map

@@ -83,3 +83,4 @@ export class TickerHandler {
         }
     }
 }
+//# sourceMappingURL=tickerHandler.js.map

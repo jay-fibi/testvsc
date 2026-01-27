@@ -89,3 +89,4 @@ const app = new LoginApp();
 // Make app available globally for debugging
 window.loginApp = app;
 export default LoginApp;
+//# sourceMappingURL=app.js.map
