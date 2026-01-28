@@ -1,7 +1,7 @@
 :root {
     --matrix-bg: #0d0d0d;
-    --matrix-green: #00ff41;
-    --matrix-dark-green: #008f11;
+    --matrix-green: #00ff00;
+    --matrix-dark-green: #0000ff;
     --matrix-cursor: #003b00;
     --matrix-text: #e0e0e0;
     --sidebar-bg: #111;
@@ -31,7 +31,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0;
     opacity: 0.4;
     pointer-events: none;
 }
@@ -47,6 +47,7 @@ body {
     flex-direction: column;
     overflow: hidden;
     backdrop-filter: blur(5px);
+    z-index: 10;
 }
 
 /* Header */
@@ -200,6 +201,40 @@ body {
     box-shadow: 0 0 5px rgba(0, 255, 65, 0.2);
 }
 
+.theme-pills {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.pill-btn {
+    width: 24px;
+    height: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    opacity: 0.7;
+}
+
+.pill-btn:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.pill-blue {
+    background: #4a90e2;
+    box-shadow: 0 0 5px #4a90e2;
+}
+
+.pill-red {
+    background: #ff5f56;
+    box-shadow: 0 0 5px #ff5f56;
+}
+
 /* Editor Panel */
 .editor-panel {
     flex: 1;
@@ -307,4 +342,99 @@ textarea#editor::selection {
     .sidebar {
         display: none;
     }
+}
+
+/* Intro Overlay */
+.pill-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent; /* Make background fully transparent to see rain */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+}
+
+.pill-content {
+    text-align: center;
+    color: white;
+    background: rgba(13, 13, 13, 0.95);
+    border: 1px solid var(--matrix-dark-green);
+    border-radius: 8px;
+    padding: 3rem;
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.3);
+    backdrop-filter: blur(5px);
+    max-width: 600px;
+    width: 90%;
+}
+
+.pill-content h1 {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--matrix-green);
+    color: var(--matrix-green);
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--matrix-dark-green);
+    padding-bottom: 1rem;
+}
+
+.pill-choice {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.pill-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s;
+}
+
+.pill-container:hover {
+    transform: scale(1.1);
+}
+
+.pill-container p {
+    font-size: 0.9rem;
+    color: #aaa;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.pill-container:hover p {
+    opacity: 1;
+}
+
+.big-pill {
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s;
+}
+
+.big-pill.blue {
+    background: linear-gradient(135deg, #4a90e2 0%, #002a50 100%);
+    box-shadow: 0 0 15px #4a90e2;
+}
+
+.big-pill.red {
+    background: linear-gradient(135deg, #ff5f56 0%, #800000 100%);
+    box-shadow: 0 0 15px #ff5f56;
+}
+
+.big-pill:hover {
+    box-shadow: 0 0 30px currentColor;
+}
 }
