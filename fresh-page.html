@@ -9,7 +9,23 @@
 <body>
     <canvas class="matrix-rain" id="matrixCanvas" aria-hidden="true"></canvas>
 
-    <div class="editor-shell">
+    <div class="pill-overlay" id="pillOverlay">
+        <div class="pill-content">
+            <h1>CHOOSE YOUR REALITY</h1>
+            <div class="pill-choice">
+                <div class="pill-container">
+                    <button class="big-pill blue" id="introBluePill"></button>
+                    <p>End the story.</p>
+                </div>
+                <div class="pill-container">
+                    <button class="big-pill red" id="introRedPill"></button>
+                    <p>Stay in Wonderland.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="editor-shell" style="display: none;">
         <header class="editor-header">
             <div class="window-controls">
                 <span class="dot dot-red"></span>
@@ -41,6 +57,10 @@
                     <div class="quick-actions">
                         <button class="ghost-btn" id="clearBtn">Clear</button>
                         <button class="ghost-btn" id="fillBtn">Inject</button>
+                    </div>
+                    <div class="theme-pills">
+                        <button class="pill-btn pill-blue" id="bluePill" title="The story ends, you wake up in your bed and believe whatever you want to believe."></button>
+                        <button class="pill-btn pill-red" id="redPill" title="You stay in Wonderland, and I show you how deep the rabbit hole goes."></button>
                     </div>
                 </div>
             </aside>
