@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Terminal</title>
+    <link rel="stylesheet" href="matrix-terminal.css">
+</head>
+<body>
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Welcome Overlay -->
+    <div class="pill-overlay" id="pill-overlay">
+        <div class="pill-card">
+            <div class="pill-title">THE MATRIX</div>
+            <p class="pill-text">This is your last chance. After this, there is no turning back.</p>
+            <p class="pill-text">You take the <span class="blue">blue pill</span> — the story ends, you wake up in your bed and believe whatever you want to believe.</p>
+            <p class="pill-text">You take the <span class="red">red pill</span> — you stay in Wonderland, and I show you how deep the rabbit hole goes.</p>
+            <div class="pill-actions">
+                <button class="pill-button blue-pill" id="blue-pill">Blue Pill</button>
+                <button class="pill-button red-pill" id="red-pill">Red Pill</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- HUD Panels -->
+    <div class="hud-panel hud-left" id="hud-left">
+        <div class="hud-section">
+            <div class="hud-title">SIGNAL</div>
+            <div class="signal-bars" id="signal-bars">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="signal-status" id="signal-status">LINK: STABLE</div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-title">SESSION</div>
+            <div class="session-stats" id="session-stats">
+                <div>USER: <span id="session-user">root</span></div>
+                <div>UPTIME: <span id="session-uptime">00:00:00</span></div>
+                <div>PACKETS: <span id="session-packets">0</span></div>
+                <div>THREATS: <span id="session-threats">0</span></div>
+            </div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-title">ATTACK NEWS</div>
+            <div class="news-feed" id="news-feed"></div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-title">GLOBAL STATS</div>
+            <select class="hud-select" id="stats-select">
+                <option value="population">Population</option>
+                <option value="co2">CO2 Emissions</option>
+                <option value="energy">Energy Use</option>
+                <option value="health">Life Expectancy</option>
+            </select>
+            <div class="stats-output" id="stats-output">
+                <div class="stats-label" id="stats-label">Global Population</div>
+                <div class="stats-value" id="stats-value">Loading...</div>
+                <div class="stats-meta" id="stats-meta">Fetching latest data</div>
+            </div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-title">GIT QUICK STATS</div>
+            <div class="git-stats" id="git-stats">
+                <div class="git-row">Commits: <span id="git-commits">0</span></div>
+                <div class="git-row">Authors: <span id="git-authors">0</span></div>
+                <div class="git-row">Top Files:</div>
+                <ul class="git-files" id="git-files"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="hud-panel hud-right" id="hud-right">
+        <div class="hud-section">
+            <div class="hud-title">RADAR</div>
+            <div class="radar" id="radar">
+                <div class="radar-sweep"></div>
+                <div class="radar-dot" style="--x: 20%; --y: 30%;"></div>
+                <div class="radar-dot" style="--x: 70%; --y: 55%;"></div>
+                <div class="radar-dot" style="--x: 45%; --y: 80%;"></div>
+            </div>
+            <div class="radar-status">SCANNING...</div>
+        </div>
+        <div class="hud-section">
+            <div class="hud-title">LOG FEED</div>
+            <div class="log-feed" id="log-feed"></div>
+        </div>
+    </div>
+
+    <!-- Terminal Container -->
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="btn close"></span>
+                <span class="btn minimize"></span>
+                <span class="btn maximize"></span>
+            </div>
+            <div class="terminal-title">root@matrix:~</div>
+        </div>
+        
+        <div class="terminal-body" id="terminal">
+            <div class="terminal-output" id="output">
+                <div class="boot-sequence">
+                    <span class="green">[OK]</span> Started Matrix Terminal Interface<br>
+                    <span class="green">[OK]</span> Loaded Neural Network Modules<br>
+                    <span class="green">[OK]</span> Connected to the Matrix<br>
+                    <br>
+                    Welcome to the Matrix Terminal v1.0<br>
+                    Type 'help' for available commands<br>
+                    <br>
+                </div>
+            </div>
+            <div class="input-line">
+                <span class="prompt">root@matrix:~$</span>
+                <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
+    <script src="matrix-terminal.js"></script>
+</body>
+</html>
