@@ -1,0 +1,33 @@
+{
+  "appName": "My Web Project",
+  "version": "1.0.0",
+  "description": "A sample web project with HTML, CSS, and JavaScript",
+  "author": {
+    "name": "Developer",
+    "email": "developer@example.com"
+  },
+  "settings": {
+    "theme": "gradient",
+    "language": "en",
+    "debug": false,
+    "features": {
+      "animations": true,
+      "notifications": true,
+      "darkMode": false
+    }
+  },
+  "api": {
+    "baseUrl": "https://api.example.com",
+    "timeout": 5000,
+    "retryAttempts": 3
+  },
+  "dependencies": {
+    "required": [
+      "modern-browser"
+    ],
+    "optional": [
+      "local-storage",
+      "service-worker"
+    ]
+  }
+}
