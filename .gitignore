@@ -1,0 +1,22 @@
+# Compiled class files
+*.class
+
+# Output and log files
+*_output.txt
+*_test_output.txt
+redirection_test.txt
+
+# Test and demo directories
+command_chain_demo/
+deep/
+nested/
+demo/
+
+# IntelliJ IDEA specific
+# (already tracked in this repo, but including for completeness)
+# .idea/
+# *.iml
+
+# Operating system files
+.DS_Store
+Thumbs.db

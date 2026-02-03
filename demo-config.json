@@ -1,0 +1,38 @@
+{
+  "projectName": "Demo Project",
+  "version": "1.0.0",
+  "description": "A demonstration project showcasing HTML, CSS, and JavaScript integration",
+  "author": {
+    "name": "Demo Author",
+    "email": "demo@example.com"
+  },
+  "settings": {
+    "theme": "light",
+    "language": "en",
+    "enableLogging": true,
+    "maxRetries": 3
+  },
+  "features": {
+    "authentication": false,
+    "darkMode": true,
+    "notifications": true,
+    "analytics": false
+  },
+  "dependencies": {
+    "jquery": "3.6.0",
+    "bootstrap": "5.3.0"
+  },
+  "apiEndpoints": {
+    "baseUrl": "https://api.example.com",
+    "endpoints": {
+      "users": "/api/users",
+      "posts": "/api/posts",
+      "comments": "/api/comments"
+    }
+  },
+  "buildOptions": {
+    "minify": true,
+    "sourceMap": true,
+    "outputDir": "dist"
+  }
+}

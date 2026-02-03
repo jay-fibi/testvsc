@@ -1,0 +1,28 @@
+{
+  "application": {
+    "name": "My Application",
+    "version": "1.0.0",
+    "environment": "development"
+  },
+  "server": {
+    "port": 3000,
+    "host": "localhost",
+    "protocol": "http"
+  },
+  "database": {
+    "type": "mongodb",
+    "host": "localhost",
+    "port": 27017,
+    "name": "myapp_db"
+  },
+  "features": {
+    "enableLogging": true,
+    "enableCache": false,
+    "maxUploadSize": "10MB"
+  },
+  "ui": {
+    "theme": "light",
+    "language": "en",
+    "showWelcomeMessage": true
+  }
+}

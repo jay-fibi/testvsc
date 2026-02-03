@@ -1,0 +1,32 @@
+{
+    "name": "cline-demo-app",
+    "version": "1.0.0",
+    "description": "A demo application created by Cline",
+    "author": "Cline",
+    "settings": {
+        "debug": true,
+        "theme": "light",
+        "language": "en",
+        "maxRetries": 3,
+        "timeout": 5000
+    },
+    "features": {
+        "authentication": true,
+        "logging": true,
+        "caching": false
+    },
+    "database": {
+        "host": "localhost",
+        "port": 5432,
+        "name": "demo_db"
+    },
+    "api": {
+        "baseUrl": "https://api.example.com",
+        "version": "v1",
+        "endpoints": [
+            "/users",
+            "/products",
+            "/orders"
+        ]
+    }
+}

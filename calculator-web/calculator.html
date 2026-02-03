@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧮 Python Calculator</h1>
+            <p class="subtitle">Powered by Python Flask Backend</p>
+        </header>
+
+        <main class="calculator-wrapper">
+            <!-- Calculator Display -->
+            <div class="calculator">
+                <div class="display">
+                    <div class="previous-operand" id="previousOperand"></div>
+                    <div class="current-operand" id="currentOperand">0</div>
+                </div>
+
+                <!-- Calculator Buttons -->
+                <div class="buttons">
+                    <button class="btn btn-function" onclick="clearAll()">AC</button>
+                    <button class="btn btn-function" onclick="clearEntry()">CE</button>
+                    <button class="btn btn-function" onclick="backspace()">⌫</button>
+                    <button class="btn btn-operator" onclick="setOperation('divide')">÷</button>
+
+                    <button class="btn btn-number" onclick="appendNumber('7')">7</button>
+                    <button class="btn btn-number" onclick="appendNumber('8')">8</button>
+                    <button class="btn btn-number" onclick="appendNumber('9')">9</button>
+                    <button class="btn btn-operator" onclick="setOperation('multiply')">×</button>
+
+                    <button class="btn btn-number" onclick="appendNumber('4')">4</button>
+                    <button class="btn btn-number" onclick="appendNumber('5')">5</button>
+                    <button class="btn btn-number" onclick="appendNumber('6')">6</button>
+                    <button class="btn btn-operator" onclick="setOperation('subtract')">−</button>
+
+                    <button class="btn btn-number" onclick="appendNumber('1')">1</button>
+                    <button class="btn btn-number" onclick="appendNumber('2')">2</button>
+                    <button class="btn btn-number" onclick="appendNumber('3')">3</button>
+                    <button class="btn btn-operator" onclick="setOperation('add')">+</button>
+
+                    <button class="btn btn-number" onclick="appendNumber('0')">0</button>
+                    <button class="btn btn-number" onclick="appendDecimal()">.</button>
+                    <button class="btn btn-function" onclick="toggleSign()">±</button>
+                    <button class="btn btn-equals" onclick="calculate()">=</button>
+                </div>
+
+                <!-- Advanced Operations -->
+                <div class="advanced-buttons">
+                    <button class="btn btn-advanced" onclick="calculateSqrt()">√</button>
+                    <button class="btn btn-advanced" onclick="setOperation('power')">x^y</button>
+                    <button class="btn btn-advanced" onclick="setOperation('modulo')">%</button>
+                    <button class="btn btn-advanced" onclick="setOperation('percentage')">x% of y</button>
+                </div>
+            </div>
+
+            <!-- History Panel -->
+            <div class="history-panel">
+                <div class="history-header">
+                    <h3>📝 History</h3>
+                    <button class="btn btn-clear-history" onclick="clearHistory()">Clear</button>
+                </div>
+                <div class="history-list" id="historyList">
+                    <p class="no-history">No calculations yet</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- API Status -->
+        <div class="api-status" id="apiStatus">
+            <span class="status-dot"></span>
+            <span class="status-text">Connecting to Python backend...</span>
+        </div>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <h2>How It Works</h2>
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="icon">🐍</div>
+                    <h3>Python Backend</h3>
+                    <p>Calculator logic written in Python with a Calculator class containing all mathematical operations.</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🌐</div>
+                    <h3>Flask API</h3>
+                    <p>RESTful API endpoints expose each calculator method for the frontend to consume.</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">⚡</div>
+                    <h3>JavaScript Frontend</h3>
+                    <p>Modern JS fetches API endpoints to perform calculations on the Python backend.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Endpoints Documentation -->
+        <section class="api-docs">
+            <h2>API Endpoints</h2>
+            <div class="endpoint-list">
+                <div class="endpoint">
+                    <code>POST /api/add</code>
+                    <span>Addition: {a, b} → result</span>
+                </div>
+                <div class="endpoint">
+                    <code>POST /api/subtract</code>
+                    <span>Subtraction: {a, b} → result</span>
+                </div>
+                <div class="endpoint">
+                    <code>POST /api/multiply</code>
+                    <span>Multiplication: {a, b} → result</span>
+                </div>
+                <div class="endpoint">
+                    <code>POST /api/divide</code>
+                    <span>Division: {a, b} → result</span>
+                </div>
+                <div class="endpoint">
+                    <code>POST /api/power</code>
+                    <span>Power: {base, exponent} → result</span>
+                </div>
+                <div class="endpoint">
+                    <code>POST /api/sqrt</code>
+                    <span>Square Root: {a} → result</span>
+                </div>
+                <div class="endpoint">
+                    <code>POST /api/modulo</code>
+                    <span>Modulo: {a, b} → result</span>
+                </div>
+                <div class="endpoint">
+                    <code>POST /api/percentage</code>
+                    <span>Percentage: {value, percent} → result</span>
+                </div>
+                <div class="endpoint">
+                    <code>GET /api/history</code>
+                    <span>Get calculation history</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built with Python + Flask + JavaScript</p>
+        </footer>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
