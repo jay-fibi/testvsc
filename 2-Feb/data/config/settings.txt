@@ -1,0 +1,12 @@
+# Settings File in Nested Directory
+
+This file is located in a nested directory structure: data/config/settings.txt
+
+## Configuration Details
+- Created: 2026-02-03
+- Purpose: Demonstrate nested directory file creation
+- Type: Text file
+
+## Notes
+This demonstrates Cline's ability to create files in nested directories.
+The directories are automatically created if they don't exist.

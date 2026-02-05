@@ -1,0 +1,9 @@
+Created: April 2, 2026
+
+This is the first file in a batch creation test.
+Purpose: Observe checkpoint behavior with multiple file operations.
+
+Content:
+- Test data for file 1
+- Checkpoint observation item
+- Additional content line

@@ -1,0 +1,10 @@
+# Checkpoint Test File 3
+Created: April 2, 2026
+
+This is the third file in a batch creation test.
+Purpose: Observe checkpoint behavior with multiple file operations.
+
+Content:
+- Test data for file 3
+- Final file in the batch
+- Completion of multi-file checkpoint test

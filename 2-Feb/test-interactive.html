@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        button {
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        .submit-btn {
+            background-color: #28a745;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .message {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        .message.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .message.info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .content-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Interactive Test Page</h1>
+        <p>This page contains various interactive elements for testing browser automation.</p>
+        
+        <div id="buttonMessage" class="message info"></div>
+        
+        <h2>1. Button Click Test</h2>
+        <p>Click the button below to test button interaction:</p>
+        <button id="testButton" onclick="handleButtonClick()">Click Me!</button>
+        
+        <h2>2. Form Input & Submission Test</h2>
+        <form id="testForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput" name="name" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="emailInput">Email:</label>
+                <input type="email" id="emailInput" name="email" placeholder="Enter your email" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Form</button>
+        </form>
+        
+        <div id="formMessage" class="message success"></div>
+    </div>
+    
+    <div class="container content-section">
+        <h2>📄 Additional Content (For Scrolling)</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    
+    <div class="container content-section">
+        <h2>🔍 More Content</h2>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    
+    <div class="container content-section">
+        <h2>📚 Even More Content</h2>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+        <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+    
+    <div class="footer">
+        <h2>🎉 You've scrolled to the bottom!</h2>
+        <p>This is the footer section of the page.</p>
+    </div>
+    
+    <script>
+        console.log('Interactive test page loaded successfully');
+        
+        function handleButtonClick() {
+            console.log('Button clicked!');
+            const messageDiv = document.getElementById('buttonMessage');
+            messageDiv.textContent = '✓ Button was clicked successfully!';
+            messageDiv.style.display = 'block';
+            messageDiv.className = 'message info';
+        }
+        
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            console.log('Form submitted!');
+            
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            
+            console.log('Name:', name);
+            console.log('Email:', email);
+            
+            const messageDiv = document.getElementById('formMessage');
+            messageDiv.innerHTML = `<strong>✓ Form submitted successfully!</strong><br>Name: ${name}<br>Email: ${email}`;
+            messageDiv.style.display = 'block';
+            
+            // Reset form after a short delay
+            setTimeout(() => {
+                document.getElementById('testForm').reset();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

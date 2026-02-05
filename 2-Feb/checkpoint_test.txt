@@ -1,0 +1,28 @@
+# Checkpoint Test File - MODIFIED VERSION
+Created: April 2, 2026
+Modified: April 2, 2026 (Significant Update)
+
+This file has been SIGNIFICANTLY MODIFIED to test checkpoint triggers.
+The content below represents major changes from the original version.
+
+## Updated Section (Previously: Initial Section)
+- Item 1: UPDATED - First test item with modifications
+- Item 2: UPDATED - Second test item with new content
+- Item 3: UPDATED - Third test item completely rewritten
+- Item 4: NEW - Additional item added
+- Item 5: NEW - Another additional item
+
+## New Section Added
+This is a completely new section that was not in the original file.
+It contains:
+1. New paragraph of text
+2. Additional structured content
+3. More information for checkpoint testing
+
+## Another New Section
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Data A   | Data B   | Data C   |
+| Data D   | Data E   | Data F   |
+
+This file has been modified to observe if checkpoint creation is triggered.

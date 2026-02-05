@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort - GeeksforGeeks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/beta3/css/all.min.css">
+    <!-- Prism.js for Syntax Highlighting (Light Theme) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">
+                <img src="https://media.geeksforgeeks.org/gfg-gg-logo.svg" alt="GeeksforGeeks">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search here...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-actions">
+                <button class="btn-signin">Sign In</button>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Practice</a></li>
+                <li><a href="#">Contests</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar-left">
+            <h3>DSA Tutorial</h3>
+            <ul>
+                <li><a href="#">DSA Home</a></li>
+                <li><a href="#">Analysis of Algorithms</a></li>
+                <li><a href="#">Asymptotic Analysis</a></li>
+                <li><a href="#" class="active">Merge Sort</a></li>
+                <li><a href="#">Quick Sort</a></li>
+                <li><a href="#">Heap Sort</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <article>
+                <header class="article-header">
+                    <h1>Merge Sort</h1>
+                    <div class="meta-info">
+                        <span><i class="far fa-calendar-alt"></i> Last Updated : 05 Feb, 2024</span>
+                    </div>
+                </header>
+
+                <section class="intro">
+                    <p><strong>Merge Sort</strong> is a sorting algorithm that follows the <strong>divide-and-conquer</strong> approach. It works by recursively dividing the input array into smaller subarrays and sorting those subarrays then merging them back together to obtain the sorted array.</p>
+                    <p>In simple terms, we can say that the process of merge sort is to divide the array into two halves, sort each half, and then merge the sorted halves back together. This process is repeated until the entire array is sorted.</p>
+                </section>
+
+                <section class="algorithm">
+                    <h2>Merge Sort Algorithm</h2>
+                    <p>Merge sort is a recursive algorithm that continuously splits the array in half until it cannot be further divided i.e., the array has only one element left (an array with one element is always sorted). Then the sorted subarrays are merged together to substitute the final sorted array.</p>
+                    
+                    <div class="steps">
+                        <ol>
+                            <li><strong>Divide:</strong> Divide the list or array recursively into two halves until it can no more be divided.</li>
+                            <li><strong>Conquer:</strong> Each subarray is sorted individually using the merge sort algorithm.</li>
+                            <li><strong>Merge:</strong> The sorted subarrays are merged back together in sorted order. The process continues until all elements from both subarrays as well as the main array are combined and sorted.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section class="code-section">
+                    <h2>Implementation of Merge Sort</h2>
+                    <div class="code-tabs">
+                        <button class="tab-link active" onclick="openCode(event, 'cpp')">C++</button>
+                        <button class="tab-link" onclick="openCode(event, 'java')">Java</button>
+                        <button class="tab-link" onclick="openCode(event, 'python')">Python</button>
+                        <button class="tab-link" onclick="openCode(event, 'js')">JavaScript</button>
+                    </div>
+
+                    <div id="cpp" class="tab-content active">
+                        <div class="code-header">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-cpp">
+// C++ program for Merge Sort
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void merge(vector<int>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    vector<int> L(n1), R(n2);
+
+    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) arr[k++] = L[i++];
+        else arr[k++] = R[j++];
+    }
+
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+
+void mergeSort(vector<int>& arr, int left, int right) {
+    if (left >= right) return;
+    int mid = left + (right - left) / 2;
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid + 1, right);
+    merge(arr, left, mid, right);
+}
+                        </code></pre>
+                    </div>
+
+                    <div id="java" class="tab-content">
+                        <div class="code-header">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-java">
+// Java program for Merge Sort
+import java.util.*;
+
+class MergeSort {
+    void merge(int arr[], int l, int m, int r) {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+
+        for (int i = 0; i < n1; ++i) L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j) R[j] = arr[m + 1 + j];
+
+        int i = 0, j = 0, k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) arr[k++] = L[i++];
+            else arr[k++] = R[j++];
+        }
+
+        while (i < n1) arr[k++] = L[i++];
+        while (j < n2) arr[k++] = R[j++];
+    }
+
+    void sort(int arr[], int l, int r) {
+        if (l < r) {
+            int m = l + (r - l) / 2;
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+            merge(arr, l, m, r);
+        }
+    }
+}
+                        </code></pre>
+                    </div>
+
+                    <div id="python" class="tab-content">
+                        <div class="code-header">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-python">
+# Python program for Merge Sort
+def mergeSort(arr):
+    if len(arr) > 1:
+        mid = len(arr)//2
+        L = arr[:mid]
+        R = arr[mid:]
+
+        mergeSort(L)
+        mergeSort(R)
+
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] <= R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+                        </code></pre>
+                    </div>
+
+                    <div id="js" class="tab-content">
+                        <div class="code-header">
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">
+// JavaScript program for Merge Sort
+function merge(arr, l, m, r) {
+    let n1 = m - l + 1;
+    let n2 = r - m;
+
+    let L = new Array(n1);
+    let R = new Array(n2);
+
+    for (let i = 0; i < n1; i++) L[i] = arr[l + i];
+    for (let j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
+
+    let i = 0, j = 0, k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) arr[k++] = L[i++];
+        else arr[k++] = R[j++];
+    }
+
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+
+function mergeSort(arr, l, r) {
+    if (l >= r) return;
+    let m = l + parseInt((r - l) / 2);
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+    merge(arr, l, m, r);
+}
+                        </code></pre>
+                    </div>
+
+                    <div class="code-output">
+                        <h4>Output</h4>
+                        <pre>Sorted array is: 
+10 27 38 43</pre>
+                    </div>
+                    
+                    <div class="practice-btn-container">
+                        <a href="#" class="btn-practice">Try it on GfG Practice</a>
+                    </div>
+                </section>
+
+                <section class="complexity">
+                    <h2>Complexity Analysis of Merge Sort</h2>
+                    <ul>
+                        <li><strong>Time Complexity:</strong>
+                            <ul>
+                                <li><strong>Best Case:</strong> O(n log n), When the array is already sorted or nearly sorted.</li>
+                                <li><strong>Average Case:</strong> O(n log n), When the array is randomly ordered.</li>
+                                <li><strong>Worst Case:</strong> O(n log n), When the array is sorted in reverse order.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Auxiliary Space:</strong> O(n), Additional space is required for the temporary arrays used during merging.</li>
+                    </ul>
+                </section>
+
+                <section class="applications">
+                    <h2>Applications of Merge Sort</h2>
+                    <ul>
+                        <li>Sorting large datasets.</li>
+                        <li>External sorting (when data is too large to fit in memory).</li>
+                        <li>Inversion counting problem.</li>
+                        <li>Used as a base for other algorithms like TimSort.</li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+
+        <aside class="sidebar-right">
+            <div class="ad-placeholder">
+                <p>Advertisement</p>
+            </div>
+            <div class="related-articles">
+                <h3>Related Articles</h3>
+                <ul>
+                    <li><a href="#">Quick Sort</a></li>
+                    <li><a href="#">Selection Sort</a></li>
+                    <li><a href="#">Bubble Sort</a></li>
+                    <li><a href="#">Insertion Sort</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://media.geeksforgeeks.org/gfg-gg-logo.svg" alt="GeeksforGeeks">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GeeksforGeeks. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Prism.js for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>

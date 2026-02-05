@@ -1,0 +1,26 @@
+{
+  "appName": "My Web Application",
+  "version": "1.0.0",
+  "environment": "development",
+  "settings": {
+    "theme": "light",
+    "language": "en",
+    "debug": true,
+    "port": 3000
+  },
+  "features": {
+    "authentication": true,
+    "notifications": false,
+    "analytics": true
+  },
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "name": "myapp_db"
+  },
+  "api": {
+    "baseUrl": "https://api.example.com",
+    "timeout": 5000,
+    "retryAttempts": 3
+  }
+}

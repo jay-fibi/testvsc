@@ -1,0 +1,10 @@
+# Checkpoint Test File 2
+Created: April 2, 2026
+
+This is the second file in a batch creation test.
+Purpose: Observe checkpoint behavior with multiple file operations.
+
+Content:
+- Test data for file 2
+- Different content from file 1
+- Unique checkpoint test data
